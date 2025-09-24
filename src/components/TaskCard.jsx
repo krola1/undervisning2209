@@ -1,15 +1,8 @@
 import { useState } from "react";
 
 //Resposnible for rendering out information based on the task object, also assists the edit function with local states an d functions
-export default function TaskCard({
-  id,
-  created,
-  completed,
-  text,
-  onDelete,
-  onToggle,
-  onEdit,
-}) {
+// moved all functions in to actions object for a cleaner look
+export default function TaskCard({ id, created, completed, text, ...actions }) {
   //--------------------------states--------------------------
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
@@ -21,7 +14,7 @@ export default function TaskCard({
   //Calls onEdit with local values and calls toggleEdit to change state
   const saveEdit = () => {
     if (newText.trim() !== "") {
-      onEdit(id, newText);
+      actions.onEdit(id, newText);
       toggleEdit();
     }
   };
@@ -31,7 +24,7 @@ export default function TaskCard({
       <input
         checked={completed}
         type="checkbox"
-        onChange={() => onToggle(id)}
+        onChange={() => actions.onToggle(id)}
       />
       <p>{new Date(created).toLocaleString()}</p>
       {/*Conditional rendering based on isEditing*/}
@@ -47,7 +40,7 @@ export default function TaskCard({
       ) : (
         <h3 onClick={() => toggleEdit()}>{text}</h3>
       )}
-      <button onClick={() => onDelete(id)}>Delete</button>
+      <button onClick={() => actions.onDelete(id)}>Delete</button>
     </div>
   );
 }
