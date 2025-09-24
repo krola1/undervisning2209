@@ -6,6 +6,7 @@ import Toolbar from "./components/Toolbar/Toolbar.jsx";
 
 //import new hook
 import { useTasks } from "./hooks/useTasks.js";
+import TaskInput from "./components/TaskInput.jsx";
 
 //The main entry point for the app, contains global states, the main array and functions related to editing the array.
 //
@@ -13,7 +14,6 @@ import { useTasks } from "./hooks/useTasks.js";
 function App() {
   //--------------------------states--------------------------
 
-  const [input, setInput] = useState("");
   const [showCompleted, setShowCompleted] = useState(true);
   const [sortMode, setSortMode] = useState("newFirst");
   const [query, setQuery] = useState("");
@@ -44,23 +44,10 @@ function App() {
     query,
   };
 
-  //--------------------------parameters for other elements--------------------------
-  const inputParameters = {
-    type: "text",
-    value: input,
-    onChange: (e) => setInput(e.target.value),
-    onKeyDown: (e) => {
-      if (e.key === "Enter") {
-        handleAdd(input); //added input parameter
-      }
-    },
-  };
   //--------------------------Rendering--------------------------
   return (
     <>
-      <input {...inputParameters} />
-      {/*added input to function*/}
-      <button onClick={() => handleAdd(input)}>add</button>
+      <TaskInput onAdd={handleAdd} />
       <Toolbar {...toolbarProps} />
       <TaskList {...taskListProps} />
     </>
