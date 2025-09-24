@@ -23,33 +23,27 @@ export default function TaskCard({ id, created, completed, text, ...actions }) {
   return (
     <div className={`${styles.card} ${completed ? styles.completed : ""}`}>
       <p className={styles.date}>{new Date(created).toLocaleString()}</p>
-      {/*Conditional rendering based on isEditing*/}
-      {isEditing ? (
-        <input
-          className={styles.textInput}
-          onChange={(e) => setNewText(e.target.value)}
-          value={newText}
-          type="text"
-        />
-      ) : (
-        <h3
-          className={`${styles.taskText} ${completed ? styles.doneText : ""}`}
-        >
-          {text}
-        </h3>
-      )}
+      <div className={styles.content}>
+        {isEditing ? (
+          <input
+            className={styles.textInput}
+            onChange={(e) => setNewText(e.target.value)}
+            value={newText}
+            type="text"
+          />
+        ) : (
+          <h3
+            className={`${styles.taskText} ${completed ? styles.doneText : ""}`}
+          >
+            {text}
+          </h3>
+        )}
+      </div>
 
       <div className={styles.actions}>
-        <label className={styles.completedToggle}>
-          <input
-            className={styles.checkbox}
-            checked={completed}
-            type="checkbox"
-            onChange={() => actions.onToggle(id)}
-            aria-label="Completed"
-          />
-          <span className={styles.completedLabel}>completed</span>
-        </label>
+        <button className={styles.button} onClick={() => actions.onToggle(id)}>
+          {completed ? "Undo" : "Complete"}
+        </button>
 
         <button className={styles.button} onClick={() => actions.onDelete(id)}>
           Delete
