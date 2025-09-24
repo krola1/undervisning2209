@@ -14,7 +14,7 @@ import TaskInput from "./components/TaskInput.jsx";
 
 function App() {
   //--------------------------states--------------------------
-  const [showCompleted, setShowCompleted] = useState(true);
+  const [showCompleted, setShowCompleted] = useState(false);
   const [sortMode, setSortMode] = useState("newFirst");
   const [query, setQuery] = useState("");
 

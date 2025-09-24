@@ -1,4 +1,5 @@
 import SortSelect from "./SortSelect.jsx";
+import CompletedSelect from "./CompletedSelect.jsx";
 import SearchInput from "./SearchInput.jsx";
 import styles from "../../styles/Toolbar.module.css";
 
@@ -18,12 +19,10 @@ export default function Toolbar({
   //--------------------------Rendering--------------------------
   return (
     <div className={styles.toolbar}>
-      <button
-        className={styles.button}
-        onClick={() => actions.setShowCompleted(!state.showCompleted)}
-      >
-        {state.showCompleted ? "Hide completed" : "Show Completed"}
-      </button>
+      <CompletedSelect
+        showCompleted={state.showCompleted}
+        setShowCompleted={actions.setShowCompleted}
+      />
       <SortSelect {...state} {...actions} />
       <SearchInput {...state} {...actions} />
     </div>
