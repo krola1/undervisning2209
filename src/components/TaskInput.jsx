@@ -21,8 +21,7 @@ export default function TaskInput({ onAdd }) {
   return (
     <>
       <input {...inputParameters} />
-      {/*added input to function*/}
-      <button onClick={() => handleAdd(input)}>add</button>
+      <button onClick={() => onAdd(input)}>add</button>
     </>
   );
 }

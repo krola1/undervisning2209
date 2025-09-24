@@ -13,7 +13,6 @@ import TaskInput from "./components/TaskInput.jsx";
 
 function App() {
   //--------------------------states--------------------------
-
   const [showCompleted, setShowCompleted] = useState(true);
   const [sortMode, setSortMode] = useState("newFirst");
   const [query, setQuery] = useState("");
@@ -23,7 +22,6 @@ function App() {
     useTasks();
 
   // --------------------------Objects for passing props--------------------------
-
   //Toolbar Props
   const toolbarProps = {
     setShowCompleted,
