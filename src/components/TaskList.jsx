@@ -21,20 +21,22 @@ export default function TaskList({
   // and a counter to show ifs something is hidden by completed toggle
   return state.list.length ? (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <strong>Total tasks: {state.list.length}</strong>
+      <div className={styles.topRow}>
+        <ul className={styles.grid}>
+          {state.list
+            .filter((task) => state.showCompleted || !task.completed)
+            .filter((task) =>
+              task.text.toLowerCase().includes(state.query.trim().toLowerCase())
+            )
+            .sort(makeSorter(state.sortMode))
+            .map((item) => (
+              <TaskCard key={item.id} {...actions} {...item} />
+            ))}
+        </ul>
+        <div className={styles.header}>
+          <strong>Total tasks: {state.list.length}</strong>
+        </div>
       </div>
-      <ul className={styles.grid}>
-        {state.list
-          .filter((task) => state.showCompleted || !task.completed)
-          .filter((task) =>
-            task.text.toLowerCase().includes(state.query.trim().toLowerCase())
-          )
-          .sort(makeSorter(state.sortMode))
-          .map((item) => (
-            <TaskCard key={item.id} {...actions} {...item} />
-          ))}
-      </ul>
     </div>
   ) : (
     <h3 className={styles.empty}>List is empty</h3>

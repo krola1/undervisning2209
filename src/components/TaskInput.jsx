@@ -25,14 +25,11 @@ export default function TaskInput({ onAdd }) {
     className: styles.input,
   };
 
-  const testlog = () => {
-    console.log(input);
-  };
   //--------------------------Rendering--------------------------
   return (
     <div className={styles.row}>
       <input {...inputParameters} />
-      <button onClick={testlog}>test</button>
+
       <button className={styles.button} onClick={handleAdd}>
         add
       </button>

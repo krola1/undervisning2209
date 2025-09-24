@@ -3,8 +3,16 @@
   flex-direction: column;
   gap: 12px;
 }
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
 .header {
+  margin-top: 1em;
+  flex: 0 0 auto;
+  white-space: nowrap;
   font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 14px;
@@ -13,10 +21,12 @@
   box-shadow: 6px 6px 0 #000000;
   padding: 6px 10px;
   width: max-content;
+  color: #494949;
 }
 
 .grid {
   display: flex;
+  flex: 1 1 auto;
   flex-wrap: wrap;
   gap: 14px;
   align-items: stretch;

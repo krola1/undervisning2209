@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import "./App.css";
+// import "./App.css";
+import styles from "./styles/App.module.css";
 import TaskList from "./components/TaskList.jsx";
 import Toolbar from "./components/Toolbar/Toolbar.jsx";
 
@@ -44,7 +45,7 @@ function App() {
 
   //--------------------------Rendering--------------------------
   return (
-    <div style={{ minHeight: "100dvh", background: "#fff0f6", padding: 24 }}>
+    <div className={styles.container}>
       <TaskInput onAdd={handleAdd} />
       <Toolbar {...toolbarProps} />
       <TaskList {...taskListProps} />
