@@ -1,12 +1,12 @@
 // Holds the sorters witch and parameter object
-
+//parameter object
 export const sortModes = {
   NEW_FIRST: "newFirst",
   OLD_FIRST: "oldFirst",
   AZ: "az",
   ZA: "za",
 };
-
+//sorter function
 export const makeSorter = (mode) => {
   return (a, b) => {
     switch (mode) {
