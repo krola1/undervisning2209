@@ -1,5 +1,6 @@
 import TaskCard from "./TaskCard.jsx";
 import { makeSorter } from "../utils/sorters.js";
+import styles from "../styles/TaskList.module.css";
 
 //  Responsible for rendering tasks to list, and aplying sort/filters
 export default function TaskList({
@@ -19,11 +20,11 @@ export default function TaskList({
   //  If list is empty, renders a message that list is empty, if not renders itsems based on sort,
   // and a counter to show ifs something is hidden by completed toggle
   return state.list.length ? (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.header}>
         <strong>Total tasks: {state.list.length}</strong>
       </div>
-      <ul>
+      <ul className={styles.grid}>
         {state.list
           .filter((task) => state.showCompleted || !task.completed)
           .filter((task) =>
@@ -36,6 +37,6 @@ export default function TaskList({
       </ul>
     </div>
   ) : (
-    <h3>List is empty</h3>
+    <h3 className={styles.empty}>List is empty</h3>
   );
 }

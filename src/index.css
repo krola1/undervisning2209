@@ -1,4 +1,6 @@
 :root {
+  --app-bg: #0f172a;
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -28,6 +30,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--app-bg);
+  min-height: 100dvh;
 }
 
 h1 {

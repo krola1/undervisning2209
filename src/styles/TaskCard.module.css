@@ -1,0 +1,80 @@
+/* Neo-brutalist card base */
+.card {
+  font-family: Montserrat, sans-serif;
+  width: 320px;
+  min-height: 180px;
+  translate: -6px -6px;
+  background: #ff66a3;
+  border: 3px solid #000000;
+  box-shadow: 12px 12px 0 #000000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 12px;
+}
+
+.card:hover {
+  translate: -6px;
+}
+
+/* Completed variant */
+.completed {
+  background: #e5e7eb; /* grå */
+}
+
+.date {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 6px 0 10px;
+  color: #111;
+}
+
+.checkbox {
+  margin-right: 10px;
+  transform: scale(1.15);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.taskText {
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  margin: 6px 0 0;
+}
+
+.doneText {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.textInput {
+  padding: 6px 8px;
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0 #000000;
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  max-width: 100%;
+}
+
+.button {
+  padding: 6px 10px;
+  margin-top: 10px;
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0 #000000;
+  font-weight: 800;
+  background: #4ade80;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  translate: 1.5px 1.5px;
+  box-shadow: 1.5px 1.5px 0 #000000;
+  background: #1ac2ff;
+}
+
+.button:active {
+  translate: 3px 3px;
+  box-shadow: 0 0 0 #000000;
+}

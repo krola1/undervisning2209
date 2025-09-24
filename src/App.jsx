@@ -44,11 +44,11 @@ function App() {
 
   //--------------------------Rendering--------------------------
   return (
-    <>
+    <div style={{ minHeight: "100dvh", background: "#fff0f6", padding: 24 }}>
       <TaskInput onAdd={handleAdd} />
       <Toolbar {...toolbarProps} />
       <TaskList {...taskListProps} />
-    </>
+    </div>
   );
 }
 

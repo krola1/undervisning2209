@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../styles/TaskCard.module.css";
 
 //Resposnible for rendering out information based on the task object, also assists the edit function with local states an d functions
 // moved all functions in to actions object for a cleaner loo
@@ -20,27 +21,47 @@ export default function TaskCard({ id, created, completed, text, ...actions }) {
   };
   //--------------------------Rendering--------------------------
   return (
-    <div style={{ border: "solid white" }}>
-      <input
-        checked={completed}
-        type="checkbox"
-        onChange={() => actions.onToggle(id)}
-      />
-      <p>{new Date(created).toLocaleString()}</p>
+    <div className={`${styles.card} ${completed ? styles.completed : ""}`}>
+      <p className={styles.date}>{new Date(created).toLocaleString()}</p>
       {/*Conditional rendering based on isEditing*/}
       {isEditing ? (
         <>
           <input
+            className={styles.textInput}
             onChange={(e) => setNewText(e.target.value)}
             value={newText}
             type="text"
           />
-          <button onClick={saveEdit}>Save</button>
+          <button className={styles.button} onClick={saveEdit}>
+            Save
+          </button>
         </>
       ) : (
-        <h3 onClick={() => toggleEdit()}>{text}</h3>
+        <h3
+          className={`${styles.taskText} ${completed ? styles.doneText : ""}`}
+          onClick={() => toggleEdit()}
+        >
+          {text}
+        </h3>
       )}
-      <button onClick={() => actions.onDelete(id)}>Delete</button>
+
+      {/* Actions footer: completed-toggle ved siden av Delete */}
+      <div className={styles.actions}>
+        <label className={styles.completedToggle}>
+          <input
+            className={styles.checkbox}
+            checked={completed}
+            type="checkbox"
+            onChange={() => actions.onToggle(id)}
+            aria-label="Completed"
+          />
+          <span className={styles.completedLabel}>completed</span>
+        </label>
+
+        <button className={styles.button} onClick={() => actions.onDelete(id)}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 }
