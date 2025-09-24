@@ -1,7 +1,7 @@
 import SortSelect from "./SortSelect.jsx";
 import SearchInput from "./SearchInput.jsx";
 
-//responsible for holding the sort/filter components and passing the correct states and setters to components
+// Responsible for holding the sort/filter components and passing the correct states and setters to components
 export default function Toolbar({
   setShowCompleted,
   query,
@@ -10,14 +10,18 @@ export default function Toolbar({
   setSortMode,
   showCompleted,
 }) {
+  //--------------------------prop groups--------------------------
+  const actions = { setShowCompleted, setQuery, setSortMode };
+  const state = { query, sortMode, showCompleted };
+
   //--------------------------Rendering--------------------------
   return (
     <>
-      <button onClick={() => setShowCompleted(!showCompleted)}>
-        {showCompleted ? "Hide completed" : "Show Completed"}
+      <button onClick={() => actions.setShowCompleted(!state.showCompleted)}>
+        {state.showCompleted ? "Hide completed" : "Show Completed"}
       </button>
-      <SortSelect sortMode={sortMode} setSortMode={setSortMode} />
-      <SearchInput query={query} setQuery={setQuery} />
+      <SortSelect {...state} {...actions} />
+      <SearchInput {...state} {...actions} />
     </>
   );
 }
