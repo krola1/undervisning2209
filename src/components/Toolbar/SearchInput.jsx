@@ -1,3 +1,5 @@
+//-------------------------- Handles the searchField --------------------------
+
 export default function SearchInput({ query, setQuery }) {
   return (
     <input

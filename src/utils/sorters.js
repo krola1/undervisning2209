@@ -1,3 +1,5 @@
+// Holds the sorters witch and parameter object
+
 export const sortModes = {
   NEW_FIRST: "newFirst",
   OLD_FIRST: "oldFirst",

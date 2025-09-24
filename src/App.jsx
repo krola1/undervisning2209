@@ -4,7 +4,7 @@ import "./App.css";
 import TaskList from "./components/TaskList.jsx";
 import Toolbar from "./components/Toolbar/Toolbar.jsx";
 
-//The main entry poinyt for out app, contains global states, the main array and functions related to editing the array.
+//The main entry point for the app, contains global states, the main array and functions related to editing the array.
 //
 
 function App() {

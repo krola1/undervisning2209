@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//Resposnible for rendering out information based on the task object, also assists the edit function with local states an d functions
 export default function TaskCard({
   id,
   created,
@@ -9,20 +10,22 @@ export default function TaskCard({
   onToggle,
   onEdit,
 }) {
+  //--------------------------states--------------------------
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
-
+  //--------------------------editing functions --------------------------
+  //toggles isEditing state
   const toggleEdit = () => {
     setIsEditing(!isEditing);
   };
-
+  //Calls onEdit with local values and calls toggleEdit to change state
   const saveEdit = () => {
     if (newText.trim() !== "") {
       onEdit(id, newText);
       toggleEdit();
     }
   };
-
+  //--------------------------Rendering--------------------------
   return (
     <div style={{ border: "solid white" }}>
       <input
@@ -31,6 +34,7 @@ export default function TaskCard({
         onChange={() => onToggle(id)}
       />
       <p>{new Date(created).toLocaleString()}</p>
+      {/*Conditional rendering based on isEditing*/}
       {isEditing ? (
         <>
           <input
