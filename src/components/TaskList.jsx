@@ -11,31 +11,27 @@ export default function TaskList({
   query,
   sortMode,
 }) {
-  // --------------------------Objects for passing props--------------------------
-  //TaskCard props
-  const taskCardActions = {
-    onDelete,
-    onToggle,
-    onEdit,
-  };
+  //--------------------------prop groups--------------------------
+  const actions = { onDelete, onToggle, onEdit };
+  const state = { showCompleted, list, query, sortMode };
 
   //--------------------------Rendering--------------------------
   //  If list is empty, renders a message that list is empty, if not renders itsems based on sort,
   // and a counter to show ifs something is hidden by completed toggle
-  return list.length ? (
+  return state.list.length ? (
     <div>
       <div>
-        <strong>Total tasks: {list.length}</strong>
+        <strong>Total tasks: {state.list.length}</strong>
       </div>
       <ul>
-        {list
-          .filter((task) => showCompleted || !task.completed)
+        {state.list
+          .filter((task) => state.showCompleted || !task.completed)
           .filter((task) =>
-            task.text.toLowerCase().includes(query.trim().toLowerCase())
+            task.text.toLowerCase().includes(state.query.trim().toLowerCase())
           )
-          .sort(makeSorter(sortMode))
+          .sort(makeSorter(state.sortMode))
           .map((item) => (
-            <TaskCard key={item.id} {...taskCardActions} {...item} />
+            <TaskCard key={item.id} {...actions} {...item} />
           ))}
       </ul>
     </div>
