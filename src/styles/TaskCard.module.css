@@ -91,6 +91,8 @@
   background: #4ade80;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .button:hover {

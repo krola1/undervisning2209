@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../styles/TaskCard.module.css";
 
 //Resposnible for rendering out information based on the task object, also assists the edit function with local states an d functions
@@ -7,6 +7,18 @@ export default function TaskCard({ id, created, completed, text, ...actions }) {
   //--------------------------states--------------------------
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
+
+  //--------------------------oppsett for å sette fokus på input felt når man trykker på edit.--------------------------
+
+  //standard referanse med nullverdi
+  const inputRef = useRef(null);
+  //effect som trigges ved ending av editing status, sjekker først om editing er true, så om ref peker på noe.
+  //hvis begge stemmer, sett fokus der hvor ref peker.
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
   //--------------------------editing functions --------------------------
   //toggles isEditing state
   const toggleEdit = () => {
@@ -26,6 +38,7 @@ export default function TaskCard({ id, created, completed, text, ...actions }) {
       <div className={styles.content}>
         {isEditing ? (
           <input
+            ref={inputRef}
             className={styles.textInput}
             onChange={(e) => setNewText(e.target.value)}
             value={newText}
