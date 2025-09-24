@@ -20,11 +20,8 @@ export default function TaskInput({ onAdd }) {
     type: "text",
     value: input,
     onChange: (e) => setInput(e.target.value),
-    onKeyDown: (e) => {
-      if (e.key === "Enter") {
-        handleAdd;
-      }
-    },
+    onKeyDown: (e) => e.key === "Enter" && handleAdd(),
+
     className: styles.input,
   };
 
