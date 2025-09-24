@@ -25,27 +25,20 @@ export default function TaskCard({ id, created, completed, text, ...actions }) {
       <p className={styles.date}>{new Date(created).toLocaleString()}</p>
       {/*Conditional rendering based on isEditing*/}
       {isEditing ? (
-        <>
-          <input
-            className={styles.textInput}
-            onChange={(e) => setNewText(e.target.value)}
-            value={newText}
-            type="text"
-          />
-          <button className={styles.button} onClick={saveEdit}>
-            Save
-          </button>
-        </>
+        <input
+          className={styles.textInput}
+          onChange={(e) => setNewText(e.target.value)}
+          value={newText}
+          type="text"
+        />
       ) : (
         <h3
           className={`${styles.taskText} ${completed ? styles.doneText : ""}`}
-          onClick={() => toggleEdit()}
         >
           {text}
         </h3>
       )}
 
-      {/* Actions footer: completed-toggle ved siden av Delete */}
       <div className={styles.actions}>
         <label className={styles.completedToggle}>
           <input
@@ -60,6 +53,12 @@ export default function TaskCard({ id, created, completed, text, ...actions }) {
 
         <button className={styles.button} onClick={() => actions.onDelete(id)}>
           Delete
+        </button>
+        <button
+          className={styles.button}
+          onClick={isEditing ? saveEdit : toggleEdit}
+        >
+          {isEditing ? "Save" : "Edit"}
         </button>
       </div>
     </div>
