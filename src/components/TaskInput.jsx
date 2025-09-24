@@ -19,6 +19,7 @@ export default function TaskInput({ onAdd }) {
   const inputParameters = {
     type: "text",
     value: input,
+    placeholder: "Enter task...",
     onChange: (e) => setInput(e.target.value),
     onKeyDown: (e) => e.key === "Enter" && handleAdd(),
 
