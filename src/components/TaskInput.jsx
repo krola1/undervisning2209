@@ -32,7 +32,7 @@ export default function TaskInput({ onAdd }) {
       <input {...inputParameters} />
 
       <button className={styles.button} onClick={handleAdd}>
-        add
+        Add
       </button>
     </div>
   );

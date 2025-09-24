@@ -47,6 +47,7 @@ function App() {
   return (
     <div className={styles.container}>
       <TaskInput onAdd={handleAdd} />
+
       <Toolbar {...toolbarProps} />
       <TaskList {...taskListProps} />
     </div>
