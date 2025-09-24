@@ -10,6 +10,7 @@
 }
 
 .header {
+  border-radius: 8px;
   margin-top: 1em;
   flex: 0 0 auto;
   white-space: nowrap;

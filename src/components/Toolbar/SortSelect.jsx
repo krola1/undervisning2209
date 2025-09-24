@@ -1,4 +1,4 @@
-import styles from "../../styles/SortSelect.module.css";
+import styles from "../../styles/Select.module.css";
 
 // responsible for the sort dropdown and changing the sortMode state.
 export default function SortSelect({ sortMode, setSortMode }) {

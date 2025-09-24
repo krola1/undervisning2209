@@ -1,4 +1,4 @@
-import styles from "../../styles/SortSelect.module.css";
+import styles from "../../styles/Select.module.css";
 
 //resposnible for dropdown menu that shows/hides completed tasks
 
