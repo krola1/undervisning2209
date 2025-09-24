@@ -1,52 +1,26 @@
 import { useState } from "react";
-import { useLocalStorage } from "./hooks/useLocalStorage.js";
+
 import "./App.css";
 import TaskList from "./components/TaskList.jsx";
 import Toolbar from "./components/Toolbar/Toolbar.jsx";
+
+//import new hook
+import { useTasks } from "./hooks/useTasks.js";
 
 //The main entry point for the app, contains global states, the main array and functions related to editing the array.
 //
 
 function App() {
   //--------------------------states--------------------------
-  const [list, setList] = useLocalStorage("list", []);
+
   const [input, setInput] = useState("");
   const [showCompleted, setShowCompleted] = useState(true);
   const [sortMode, setSortMode] = useState("newFirst");
   const [query, setQuery] = useState("");
 
-  //--------------------------List editing functions --------------------------
-  // adds task object to list
-  const handleAdd = () => {
-    if (input.trim() !== "") {
-      const newItem = {
-        id: crypto.randomUUID(),
-        created: Date.now(),
-        text: input,
-        completed: false,
-      };
-      setList([...list, newItem]);
-      setInput("");
-    }
-  };
-  ///  function for handelin deleting of tasks
-  const handleDelete = (id) => {
-    setList(list.filter((task) => task.id !== id));
-  };
-  /// function for toggeling complete status
-  const toggleComplete = (id) => {
-    setList(
-      list.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    );
-  };
-  // function for editing task's
-  const editTask = (id, newText) => {
-    setList(
-      list.map((task) => (task.id === id ? { ...task, text: newText } : task))
-    );
-  };
+  //variables and functions from new hook "useTasks.js"
+  const { list, handleAdd, handleDelete, toggleComplete, editTask } =
+    useTasks();
 
   // --------------------------Objects for passing props--------------------------
 
@@ -77,7 +51,7 @@ function App() {
     onChange: (e) => setInput(e.target.value),
     onKeyDown: (e) => {
       if (e.key === "Enter") {
-        handleAdd();
+        handleAdd(input); //added input parameter
       }
     },
   };
@@ -85,7 +59,8 @@ function App() {
   return (
     <>
       <input {...inputParameters} />
-      <button onClick={handleAdd}>add</button>
+      {/*added input to function*/}
+      <button onClick={() => handleAdd(input)}>add</button>
       <Toolbar {...toolbarProps} />
       <TaskList {...taskListProps} />
     </>

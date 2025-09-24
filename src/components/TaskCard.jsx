@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //Resposnible for rendering out information based on the task object, also assists the edit function with local states an d functions
-// moved all functions in to actions object for a cleaner look
+// moved all functions in to actions object for a cleaner loo
 export default function TaskCard({ id, created, completed, text, ...actions }) {
   //--------------------------states--------------------------
   const [isEditing, setIsEditing] = useState(false);
